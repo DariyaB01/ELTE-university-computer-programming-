@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
 
-# Data
 total_respondents = 120
 importance_of_foreign_language = {'Positive': 79, 'Negative': 21}
 willingness_to_increase_classes = {'Willing': 79, 'Unwilling': 21}
@@ -14,13 +13,11 @@ reasons_for_learning_language = {
     'Program requirement': 16
 }
 
-# Convert to numpy arrays for statistical analysis
 importance_values = np.array(list(importance_of_foreign_language.values()))
 willingness_values = np.array(list(willingness_to_increase_classes.values()))
 study_preferences_values = np.array(list(study_preferences.values()))
 reasons_values = np.array(list(reasons_for_learning_language.values()))
 
-# Descriptive statistics
 def print_descriptive_stats(data, title):
     print(f"{title} - Descriptive Statistics")
     print(f"Mean: {np.mean(data):.2f}")
@@ -29,7 +26,6 @@ def print_descriptive_stats(data, title):
     print(f"Variance: {np.var(data):.2f}")
     print()
 
-# Inferential statistics (Chi-square test for independence)
 def chi_square_test(observed, title):
     chi2, p = stats.chi2_contingency([observed, total_respondents - observed])[:2]
     print(f"{title} - Chi-square Test")
@@ -51,21 +47,18 @@ chi_square_test(willingness_values, "Willingness to Increase Practical Classes")
 chi_square_test(study_preferences_values, "Study Preferences")
 chi_square_test(reasons_values, "Reasons for Learning a Foreign Language")
 
-# Plot 1: Pie Chart for importance of learning a foreign language
 plt.figure(figsize=(14, 10))
 
 plt.subplot(2, 2, 1)
 plt.pie(importance_of_foreign_language.values(), labels=importance_of_foreign_language.keys(), autopct='%1.1f%%', startangle=140, colors=['lightblue', 'lightcoral'])
 plt.title('Importance of Learning a Foreign Language')
 
-# Plot 2: Bar Chart for willingness to increase practical classes
 plt.subplot(2, 2, 2)
 plt.bar(willingness_to_increase_classes.keys(), willingness_to_increase_classes.values(), color=['green', 'red'])
 plt.title('Willingness to Increase Practical Classes')
 plt.ylabel('Percentage')
 plt.ylim(0, 100)
 
-# Plot 3: Bar Chart for study preferences
 plt.subplot(2, 2, 3)
 plt.bar(study_preferences.keys(), study_preferences.values(), color=['blue', 'orange', 'purple'])
 plt.title('Study Preferences')
@@ -73,16 +66,13 @@ plt.ylabel('Percentage')
 plt.ylim(0, 100)
 plt.xticks(rotation=45)
 
-# Plot 4: Pie Chart for reasons for learning a foreign language
 plt.subplot(2, 2, 4)
 plt.pie(reasons_for_learning_language.values(), labels=reasons_for_learning_language.keys(), autopct='%1.1f%%', startangle=140, colors=['gold', 'lightgreen', 'lightpink', 'lightgray'])
 plt.title('Reasons for Learning a Foreign Language')
 
-# Adjust layout and show plot
 plt.tight_layout()
 plt.show()
 
-# Context from the article
 context = """
 The article discusses the problems and prospects of the formation and development of multilingual education in Kazakhstan.
 Key highlights include:
@@ -99,3 +89,4 @@ Challenges identified include:
 """
 
 print(context)
+
